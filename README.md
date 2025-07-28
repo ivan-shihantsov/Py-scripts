@@ -7,4 +7,6 @@ Contents:
     * use requests and BeautifulSoup to get video descriptions of specific YouTube channel
 * [mymarket scraper](mymarket-scraper-selenium/)
     * use selenium to parse mymarket GE
+* [idiom parser](https://github.com/ivan-shihantsov/py-idiom-parser)
+    * linguistic project to find idioms on most popular sites
 
