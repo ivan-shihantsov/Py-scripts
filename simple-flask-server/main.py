@@ -1,15 +1,22 @@
 from flask import Flask, app
 import os
+import socket
+from datetime import datetime
 
 app = Flask(__name__)
 
 
 @app.route("/", methods = ['GET'])
 def hello_world():
-    hostname = os.environ['HOSTNAME']
-    appname = os.environ['APP_NAME']
+    hostname = os.environ.get('HOSTNAME', '-')
+    appname = os.environ.get('APP_NAME', '-')
+    nodeip = os.environ.get('NODE_IP', '-')
+    helmver = os.environ.get('HELM_VER', '-')
+    pod_ip = socket.gethostbyname(socket.gethostname())
+
+    now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     
-    answer = f" hostname: {hostname} <br> appname: {appname}<br>"
+    answer = f" hostname: {hostname} <br> pod IP: {pod_ip} <br> node IP: {nodeip} <br> appname: {appname} <br> helm revision: {helmver} <br> time: {now} <br>"
     return answer
 
 
